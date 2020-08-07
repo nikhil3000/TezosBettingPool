@@ -1,1 +1,1 @@
-./utils/smartpy-cli/SmartPy.sh compile ./contract/demo.py "MyContract(12, 123)" ./contract_build
+./utils/smartpy-cli/SmartPy.sh compile ./contract/stakingEscrow.py "StakingEscrow(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))" ./contract_build
