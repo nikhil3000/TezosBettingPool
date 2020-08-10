@@ -1,12 +1,15 @@
 {
-  "contractName": "stakingEscrow",
+  "contractName": "testContract",
+  "contractName1": "stakingEscrow",
   "compile_config": {
-    "class_name": "StakingEscrow(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))"
+    "class_name": "TestingContract()",
+    "class_name1": "StakingEscrow(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))"
   },
   "test_config": {
     "test_name": "Minimal"
   },
   "deploy_config": {
+    "node1": "http://localhost:18731",
     "node": "https://testnet-tezos.giganode.io",
     "key": "key1",
     "amount": 1,
@@ -17,6 +20,7 @@
     "gas_limit": 500000
   },
   "contract_interaction_config": {
+    "node1": "http://192.168.65.0:18731",
     "node": "https://testnet-tezos.giganode.io",
     "api-key": ""
   }

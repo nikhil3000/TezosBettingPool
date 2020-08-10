@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "React-SmartPy Bundle for Tezos dApp Developers",
   "scripts": {
+    "mocha-test": "mocha",
     "sync": "node ./utils/scripts/compileSync.js",
     "test": "bash ./utils/scripts/checkScenario.sh",
     "compile": "npm run run-code",
@@ -38,6 +39,7 @@
     "bs58check": "^2.1.2",
     "chalk": "^4.1.0",
     "conseiljs": "0.4.3",
-    "libsodium-wrappers-sumo": "^0.7.6"
+    "libsodium-wrappers-sumo": "^0.7.6",
+    "mocha": "^8.1.1"
   }
 }
