@@ -11,6 +11,7 @@ class BettingPool(sp.Contract):
         self.init(
             admin = admin, 
             currentCycle =311,
+            adminBalance =sp.mutez(0),
             # amount in mutez
             betSize = sp.map({5:5000000,10:3000000,15:1000000}),
             earnedAmount = 0,
@@ -44,6 +45,9 @@ class BettingPool(sp.Contract):
         self.data.earnedAmount = self.data.betSize[params.betType] * sp.len(betPool.senderList) * self.data.yields[params.betType] / 10000
         #disburse Amounts
         i = sp.local('i',0)
+        
+        amount = self.data.earnedAmount * 10 / 100 
+        self.data.adminBalance += sp.mutez(amount)
         sp.for x in betPool.senderList:
             sp.if i.value==winnerIndex:
                 amount = self.data.earnedAmount * 90 / 100 + self.data.betSize[params.betType]
@@ -57,6 +61,23 @@ class BettingPool(sp.Contract):
     def incrementCycle(self,param):
         sp.verify(sp.sender==self.data.admin)
         self.data.currentCycle += param
+        
+    @sp.entry_point
+    def updateBaker(self,baker):
+        sp.verify(sp.sender == self.data.admin)
+        sp.set_delegate(baker)
+        
+    @sp.entry_point
+    def depositFunds(self):
+        sp.if sp.sender==self.data.admin:
+            self.data.adminBalance += sp.amount
+            
+    @sp.entry_point
+    def withdrawAdminFunds(self,amount):
+        sp.verify(sp.sender == self.data.admin)
+        sp.verify(sp.mutez(amount) <= self.data.adminBalance)
+        sp.send(self.data.admin,sp.mutez(amount))
+        self.data.adminBalance -= sp.mutez(amount)
   
 
 @sp.add_test(name = "Minimal")
