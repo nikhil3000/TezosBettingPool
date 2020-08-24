@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "React-SmartPy Bundle for Tezos dApp Developers",
   "scripts": {
-    "mocha-test": "mocha",
+    "mocha-test-deploy": "mocha -g 'deploy'",
+    "mocha-test-functions": "mocha -g 'functions'",
     "sync": "node ./utils/scripts/compileSync.js",
     "test": "bash ./utils/scripts/checkScenario.sh",
     "compile": "npm run run-code",
@@ -36,7 +37,11 @@
   },
   "homepage": "https://github.com/Tezsure/Bundle-react#readme",
   "dependencies": {
+    "@taquito/taquito": "^6.3.5-beta.0",
+    "axios": "^0.20.0",
     "bs58check": "^2.1.2",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "chalk": "^4.1.0",
     "conseiljs": "0.4.3",
     "libsodium-wrappers-sumo": "^0.7.6",

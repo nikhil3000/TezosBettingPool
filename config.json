@@ -1,9 +1,8 @@
 {
-  "contractName": "testContract",
-  "contractName1": "stakingEscrow",
+  "contractName": "cycleOracle",
   "compile_config": {
-    "class_name": "TestingContract()",
-    "class_name1": "StakingEscrow(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))"
+    "class_name": "CycleOracle(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))",
+    "class_name1": "StockClient()"
   },
   "test_config": {
     "test_name": "Minimal"
