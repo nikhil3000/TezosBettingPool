@@ -37,7 +37,7 @@ const callEntryPoint = (
 };
 
 const deployContract = async (contract, storage, key = key1, amount = 0) => {
-  const result = await conseiljs.TezosNodeWriter.sendContractOriginationOperation(
+  return conseiljs.TezosNodeWriter.sendContractOriginationOperation(
     tezosNode,
     key,
     amount,
@@ -50,7 +50,6 @@ const deployContract = async (contract, storage, key = key1, amount = 0) => {
     storage,
     conseiljs.TezosParameterFormat.Michelson
   );
-  return result;
 };
 
 const sleep = (ms) => {

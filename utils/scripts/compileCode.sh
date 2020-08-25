@@ -1,1 +1,1 @@
-./utils/smartpy-cli/SmartPy.sh compile ./contract/cycleOracle.py "CycleOracle(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))" ./contract_build
+./utils/smartpy-cli/SmartPy.sh compile ./contract/bettingPool.py "BettingPool(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))" ./contract_build

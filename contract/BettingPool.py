@@ -12,7 +12,7 @@ class BettingPool(sp.Contract):
             admin = admin, 
             currentCycle =311,
             adminBalance =sp.mutez(0),
-            oracleAddress = sp.address("KT1"),
+            oracleAddress = sp.address("KT1NN7B3Wc5vb93wL87Fsu1HJepLkCU5JRHM"),
             # amount in mutez
             betSize = sp.map({5:5000000,10:3000000,15:1000000}),
             earnedAmount = 0,

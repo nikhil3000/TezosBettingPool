@@ -1,8 +1,7 @@
 {
-  "contractName": "cycleOracle",
+  "contractName": "bettingPool",
   "compile_config": {
-    "class_name": "CycleOracle(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))",
-    "class_name1": "StockClient()"
+    "class_name": "BettingPool(sp.address('tz1PCVSQfsHmrKRgCdLhrN8Yanb5mwEL8rxu'))"
   },
   "test_config": {
     "test_name": "Minimal"
