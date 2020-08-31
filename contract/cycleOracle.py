@@ -19,11 +19,12 @@ class CycleOracle(sp.Contract):
                 self.data.cycleNumber = params.cycleNumber
                 
     @sp.entry_point
-    def getDataFromOro(self,uuid):
-        errcd = sp.record(uuid=uuid,cycleNumber=0)
-        contract = sp.contract(sp.TRecord(uuid = sp.TNat, cycleNumber = sp.TNat),sp.sender,entry_point = "placeBetFromOro").open_some()
+    def getDataFromOro(self,params):
+        sp.set_type(params.entryAddress,sp.TAddress)
+        errcd = sp.record(uuid=params.uuid,cycleNumber=0)
+        contract = sp.contract(sp.TRecord(uuid = sp.TNat, cycleNumber = sp.TNat),params.entryAddress).open_some()
         
         sp.if sp.amount == sp.mutez(5000):
-            sp.transfer(sp.record(uuid=uuid,cycleNumber=self.data.cycleNumber),sp.mutez(0),contract)
+            sp.transfer(sp.record(uuid=params.uuid,cycleNumber=self.data.cycleNumber),sp.mutez(0),contract)
         sp.else:
             sp.transfer(errcd,sp.amount,contract)

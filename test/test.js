@@ -165,28 +165,29 @@ describe('functions', async function () {
       console.log(res.operationGroupID);
     });
   });
-  it('Update cycle Number', async () => {
-    await sleep(30000);
-    const data = await callEntryPoint(
-      bettingPoolContractAddress,
-      ` (Left (Right (Left 6)))`,
-      key[0]
-    );
-    console.log(data.operationGroupID);
-  });
+  // it('Update cycle Number', async () => {
+  //   await sleep(30000);
+  //   const data = await callEntryPoint(
+  //     bettingPoolContractAddress,
+  //     ` (Left (Right (Left 6)))`,
+  //     key[0]
+  //   );
+  //   console.log(data.operationGroupID);
+  // });
   it('Complete Bet', async () => {
     const contractInstance = await Tezos.contract.at(
       bettingPoolContractAddress
     );
     const storage = await contractInstance.storage();
-    const poolSize = storage.betData.get('5').get('268').senderList.length;
-    console.log('pool size', poolSize);
+    const poolSize = storage.betData.get('5').get('268');
+
+    console.log('pool size', poolSize.senderList.length);
     const operation = await callEntryPoint(
       bettingPoolContractAddress,
       `(Left (Left (Left (Pair 268 5))))`,
       key[3],
       0,
-      poolSize * 15000 + 500000
+      poolSize.senderList.length * 15000 + 500000
     );
     console.log(operation.operationGroupID);
   });
@@ -218,14 +219,14 @@ describe('functions', async function () {
       bettingPoolContractAddress
     );
     const storage = await contractInstance.storage();
-    const poolSize = storage.betData.get('5').get('311').senderList.length;
-    console.log('pool size', poolSize);
+    const poolSize = storage.betData.get('5').get('311');
+    console.log('pool size', poolSize.senderList.length);
     return callEntryPoint(
       bettingPoolContractAddress,
       `(Left (Left (Left (Pair 268 5))))`,
       key[3],
       0,
-      poolSize * 15000 + 500000
+      poolSize.senderList.length * 15000 + 500000
     ).should.be.rejected;
     // console.log(operation.operationGroupID);
   });
